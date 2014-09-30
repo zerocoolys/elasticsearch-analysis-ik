@@ -25,12 +25,6 @@
  */
 package org.wltea.analyzer.dic;
 
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.elasticsearch.common.logging.ESLogger;
 import org.elasticsearch.common.logging.Loggers;
 import org.wltea.analyzer.cfg.Configuration;
@@ -326,41 +320,41 @@ public class Dictionary {
 	private static List<String> getRemoteWords(String location){
 		
 		List<String> buffer = new ArrayList<String>();
-		RequestConfig rc = RequestConfig.custom().setConnectionRequestTimeout(10*1000)
-				.setConnectTimeout(10*1000).setSocketTimeout(60*1000).build();
-		CloseableHttpClient httpclient = HttpClients.createDefault();
-		CloseableHttpResponse response;
-		BufferedReader in;
-		HttpGet get = new HttpGet(location);
-		get.setConfig(rc);
-		try {
-			response = httpclient.execute(get);
-			if(response.getStatusLine().getStatusCode()==200){
-				
-				String charset = "UTF-8";
-				//获取编码，默认为utf-8
-				if(response.getEntity().getContentType().getValue().contains("charset=")){
-					String contentType=response.getEntity().getContentType().getValue();
-					charset=contentType.substring(contentType.lastIndexOf("=")+1);
-				}
-				in = new BufferedReader(new InputStreamReader(response.getEntity().getContent(),charset));
-				String line ;
-				while((line = in.readLine())!=null){
-					buffer.add(line);
-				}
-				in.close();
-				response.close();
-				return buffer;
-			}
-			response.close();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return buffer;
+//		RequestConfig rc = RequestConfig.custom().setConnectionRequestTimeout(10*1000)
+//				.setConnectTimeout(10*1000).setSocketTimeout(60*1000).build();
+//		CloseableHttpClient httpclient = HttpClients.createDefault();
+//		CloseableHttpResponse response;
+//		BufferedReader in;
+//		HttpGet get = new HttpGet(location);
+//		get.setConfig(rc);
+//		try {
+//			response = httpclient.execute(get);
+//			if(response.getStatusLine().getStatusCode()==200){
+//
+//				String charset = "UTF-8";
+//				//获取编码，默认为utf-8
+//				if(response.getEntity().getContentType().getValue().contains("charset=")){
+//					String contentType=response.getEntity().getContentType().getValue();
+//					charset=contentType.substring(contentType.lastIndexOf("=")+1);
+//				}
+//				in = new BufferedReader(new InputStreamReader(response.getEntity().getContent(),charset));
+//				String line ;
+//				while((line = in.readLine())!=null){
+//					buffer.add(line);
+//				}
+//				in.close();
+//				response.close();
+//				return buffer;
+//			}
+//			response.close();
+//		} catch (ClientProtocolException e) {
+//			e.printStackTrace();
+//		} catch (IllegalStateException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+        return buffer;
 	}
 	
 	

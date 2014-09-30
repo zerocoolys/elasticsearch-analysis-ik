@@ -147,10 +147,10 @@ class LetterSegmenter implements ISegmenter {
 				this.end = context.getCursor();
 			}else{
 				//遇到非Letter字符，输出词元
-				Lexeme newLexeme = new Lexeme(context.getBufferOffset() , this.start , this.end - this.start + 1 , Lexeme.TYPE_LETTER);
-				context.addLexeme(newLexeme);
-				this.start = -1;
-				this.end = -1;
+//				Lexeme newLexeme = new Lexeme(context.getBufferOffset() , this.start , this.end - this.start + 1 , Lexeme.TYPE_LETTER);
+//				context.addLexeme(newLexeme);
+//				this.start = -1;
+//				this.end = -1;
 			}			
 		}
 		
@@ -158,10 +158,10 @@ class LetterSegmenter implements ISegmenter {
 		if(context.isBufferConsumed()){
 			if(this.start != -1 && this.end != -1){
 				//缓冲以读完，输出词元
-				Lexeme newLexeme = new Lexeme(context.getBufferOffset() , this.start , this.end - this.start + 1 , Lexeme.TYPE_LETTER);
-				context.addLexeme(newLexeme);
-				this.start = -1;
-				this.end = -1;
+//				Lexeme newLexeme = new Lexeme(context.getBufferOffset() , this.start , this.end - this.start + 1 , Lexeme.TYPE_LETTER);
+//				context.addLexeme(newLexeme);
+//				this.start = -1;
+//				this.end = -1;
 			}
 		}
 		

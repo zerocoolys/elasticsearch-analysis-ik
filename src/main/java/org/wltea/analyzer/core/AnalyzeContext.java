@@ -279,7 +279,7 @@ class AnalyzeContext {
 				}
 			}else{//pathMap中找不到index对应的LexemePath
 				//单字输出
-				this.outputSingleCJK(index);
+//				this.outputSingleCJK(index);
 				index++;
 			}
 		}
@@ -293,8 +293,8 @@ class AnalyzeContext {
 	 */
 	private void outputSingleCJK(int index){
 		if(CharacterUtil.CHAR_CHINESE == this.charTypes[index]){			
-			Lexeme singleCharLexeme = new Lexeme(this.buffOffset , index , 1 , Lexeme.TYPE_CNCHAR);
-			this.results.add(singleCharLexeme);
+//			Lexeme singleCharLexeme = new Lexeme(this.buffOffset , index , 1 , Lexeme.TYPE_CNCHAR);
+//			this.results.add(singleCharLexeme);
 		}else if(CharacterUtil.CHAR_OTHER_CJK == this.charTypes[index]){
 			Lexeme singleCharLexeme = new Lexeme(this.buffOffset , index , 1 , Lexeme.TYPE_OTHER_CJK);
 			this.results.add(singleCharLexeme);
